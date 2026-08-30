@@ -1056,6 +1056,77 @@ Figma에 있는 문구와 콘텐츠를 임의로 수정하지 말고, Figma에 �
         여러 에이전트가 같은 파일을 동시에 수정하지 않게 합니다. Figma Analyst Agent와 Visual QA Agent는 분석과 검수 결과만 전달하고, 실제 코드 수정은 <b>Frontend Builder Agent</b>가 담당합니다.
       </div>
     </div>
+
+    <div class="subhead mt-l"><span class="ic ic-terminal"></span><h3>에이전트 업무 배정 프롬프트</h3></div>
+    <div class="prompt-block" data-copy>
+      <div class="prompt-bar">
+        <span class="ic ic-users"></span>
+        <span class="prompt-title">Agent Team</span>
+        <button type="button" class="prompt-copy" data-copy-btn aria-label="에이전트 업무 배정 프롬프트 복사">
+          <span class="ic ic-copy" aria-hidden="true"></span>
+          <span data-copy-label>복사</span>
+        </button>
+      </div>
+      <pre class="prompt-body" data-copy-source># Agent Team
+
+이 작업은 역할이 다른 세 명의 에이전트로 나누어 진행해줘.
+
+## 1. Figma Analyst Agent
+
+Figma MCP로 구현할 화면을 분석하고 다음 내용을 구체적으로 정리해줘.
+
+- 프레임과 화면의 개수
+- 화면 크기와 전체 구조
+- 섹션 순서와 콘텐츠 배치
+- Auto Layout과 요소 사이의 간격
+- 폰트, 색상, 테두리와 그림자
+- 이미지와 아이콘
+- 버튼, 탭, 메뉴와 슬라이드
+- 데스크톱과 모바일 화면의 차이
+
+코드를 수정하지 말고, 분석 결과를 Frontend Builder Agent가 바로 사용할 수 있는 형태로 전달해줘.
+
+## 2. Frontend Builder Agent
+
+Figma Analyst Agent의 분석 결과를 기준으로 화면을 구현해줘.
+
+- 의미에 맞는 HTML 구조 작성
+- CSS로 레이아웃과 디자인 구현
+- JavaScript로 인터랙션 구현
+- Figma 이미지와 아이콘 적용
+- 데스크톱과 모바일 반응형 구현
+- 브라우저 실행과 기본 기능 확인
+
+Figma에 없는 내용이나 기능을 임의로 추가하지 마. 실제 코드 수정은 Frontend Builder Agent만 담당해.
+
+## 3. Visual QA Agent
+
+Figma 원본과 브라우저의 구현 화면을 같은 크기로 비교하고 다음 항목의 차이를 찾아줘.
+
+- 화면과 콘텐츠 너비
+- 섹션 위치와 정렬
+- 여백과 요소 사이의 간격
+- 폰트 크기, 굵기와 줄바꿈
+- 색상, 테두리, 라운드와 그림자
+- 이미지 크기, 비율과 잘림
+- 아이콘 크기와 위치
+- 버튼, 메뉴, 탭과 슬라이드 작동 여부
+- 데스크톱과 모바일 화면
+
+코드를 직접 수정하지 말고, 발견한 차이와 수정해야 할 위치를 Frontend Builder Agent에게 구체적으로 전달해줘.
+
+## Collaboration Rules
+
+다음 순서로 진행해줘.
+
+Figma Analyst Agent의 디자인 분석
+→ Frontend Builder Agent의 화면 구현
+→ Visual QA Agent의 비교 검수
+→ Frontend Builder Agent의 수정
+→ Visual QA Agent의 재검수
+
+여러 에이전트가 같은 파일을 동시에 수정하지 않게 해줘. Figma Analyst Agent와 Visual QA Agent는 분석과 검수 결과만 전달하고, 실제 코드 수정은 Frontend Builder Agent가 담당해.</pre>
+    </div>
   </div>
 </section>
 
