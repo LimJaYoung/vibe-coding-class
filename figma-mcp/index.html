@@ -103,6 +103,7 @@
 .ic-move::before{content:"\f337"}
 .ic-flag::before{content:"\f024"}
 .ic-file-code::before{content:"\f1c9"}
+.ic-copy::before{content:"\f0c5"}
 .ic-keyboard::before{content:"\f11c"}
 .ic-forward::before{content:"\f04e"}
 .ic-compass::before{content:"\f14e"}
@@ -801,6 +802,20 @@ code{
 .prompt-copy:hover{background:#fff;color:var(--primary);}
 .prompt-copy.is-copied{background:var(--accent);border-color:var(--accent);color:#fff;}
 .prompt-copy .ic{color:inherit;font-size:0.95em;}
+.copyable-codeblock{position:relative;}
+.copyable-codeblock pre{padding-right:clamp(142px,18vw,170px);}
+.address-copy{
+  position:absolute;top:10px;right:10px;z-index:1;
+  display:inline-flex;align-items:center;gap:7px;
+  min-height:42px;padding:0 14px;
+  border:1px solid var(--border);border-radius:var(--r-md);
+  background:#fff;color:var(--text);font-family:var(--body-font);
+  font-size:clamp(12px,1.4vw,14px);font-weight:700;cursor:pointer;
+  transition:background .15s ease,color .15s ease,border-color .15s ease;
+}
+.address-copy:hover{background:var(--primary);color:#fff;}
+.address-copy.is-copied{background:var(--accent);border-color:var(--accent);color:#fff;}
+.address-copy .ic{color:inherit;font-size:0.95em;}
 .prompt-body{
   margin:0;padding:clamp(18px,2.4vw,26px);
   font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
@@ -869,8 +884,12 @@ code{
     <p class="lead">Figma에서 구현할 화면이나 프레임을 선택한 뒤 링크를 복사합니다. 주소에 <code>node-id</code>가 포함되어 있어야 AI가 구현할 화면을 정확하게 찾을 수 있습니다.</p>
 
     <div class="subhead mt-l"><span class="ic ic-link"></span><h3>실습 Figma 주소</h3></div>
-    <div class="codeblock">
-      <pre>https://www.figma.com/design/wcd0hOEnmKMAYkVoIhpBY0/%EB%B0%94%EC%9D%B4%EB%B8%8C%EC%BD%94%EB%94%A9-smaple?node-id=0-1&amp;t=sd8cta4fGMrpvv2X-1</pre>
+    <div class="codeblock copyable-codeblock" data-copy>
+      <button type="button" class="address-copy" data-copy-btn aria-label="Figma 실습 주소 복사">
+        <span class="ic ic-copy" aria-hidden="true"></span>
+        <span data-copy-label>주소 복사</span>
+      </button>
+      <pre data-copy-source>https://www.figma.com/design/wcd0hOEnmKMAYkVoIhpBY0/%EB%B0%94%EC%9D%B4%EB%B8%8C%EC%BD%94%EB%94%A9-smaple?node-id=0-1&amp;t=sd8cta4fGMrpvv2X-1</pre>
     </div>
 
     <div class="subhead mt-l"><span class="ic ic-list-check"></span><h3>작업 전 확인</h3></div>
@@ -1132,7 +1151,7 @@ figma-mcp-practice/
 </footer>
 
 <script>
-/* ===== 실습 프롬프트 복사 버튼 ===== */
+/* ===== 복사 버튼 ===== */
 (function(){
   var blocks = document.querySelectorAll('[data-copy]');
   for (var i = 0; i < blocks.length; i++){
@@ -1141,7 +1160,7 @@ figma-mcp-practice/
       var source = block.querySelector('[data-copy-source]');
       var label = block.querySelector('[data-copy-label]');
       if (!btn || !source) return;
-      var defaultLabel = label ? label.textContent : '프롬프트 복사';
+      var defaultLabel = label ? label.textContent : '내용 복사';
       btn.addEventListener('click', function(){
         var text = source.textContent;
         function done(ok){
