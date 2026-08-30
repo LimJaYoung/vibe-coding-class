@@ -947,6 +947,41 @@ Figma MCP를 사용하지 않고 화면을 임의로 추측하거나 코드를 �
       <span class="ic ic-flag"></span>
       <p>Goal은 단순히 웹페이지를 만드는 것이 아니라, Figma 원본과 비교했을 때 눈에 띄는 차이가 없도록 구현하는 것입니다.</p>
     </div>
+
+    <div class="subhead mt-l"><span class="ic ic-terminal"></span><h3>Goal 설정 프롬프트</h3></div>
+    <div class="prompt-block" data-copy>
+      <div class="prompt-bar">
+        <span class="ic ic-flag"></span>
+        <span class="prompt-title">구현 완료 기준</span>
+        <button type="button" class="prompt-copy" data-copy-btn aria-label="Goal 설정 프롬프트 복사">
+          <span class="ic ic-copy" aria-hidden="true"></span>
+          <span data-copy-label>복사</span>
+        </button>
+      </div>
+      <pre class="prompt-body" data-copy-source># Goal
+
+Figma MCP로 확인한 화면을 HTML, CSS, JavaScript로 구현해줘.
+
+전체 구조만 비슷하게 만드는 수준에서 끝내지 말고, 다음 항목을 Figma 원본과 동일하게 맞춰줘.
+
+- 화면과 콘텐츠의 전체 너비
+- 섹션의 순서와 콘텐츠 배치
+- 요소의 크기와 정렬
+- 상하좌우 여백과 요소 사이의 간격
+- 폰트 종류, 크기, 굵기, 행간과 자간
+- 텍스트 줄바꿈과 정렬
+- 배경색, 글자색과 테두리색
+- 버튼, 카드와 입력창의 크기와 형태
+- 라운드, 테두리와 그림자
+- 이미지 크기, 비율, 위치와 잘림 방식
+- 아이콘 종류, 크기와 정렬
+- 메뉴, 버튼, 탭과 슬라이드의 동작
+- Figma에 포함된 데스크톱과 모바일 화면
+
+Figma에 있는 문구와 콘텐츠를 임의로 수정하지 말고, Figma에 없는 섹션이나 기능도 추가하지 마.
+
+최종 결과는 Figma 원본과 브라우저의 구현 화면을 같은 화면 크기로 비교했을 때 눈에 띄는 차이가 거의 없는 수준이어야 해.</pre>
+    </div>
   </div>
 </section>
 
